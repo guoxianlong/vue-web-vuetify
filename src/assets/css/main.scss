@@ -1,0 +1,15 @@
+  @import 'vars.scss';
+  html {
+    color: $normal-color;
+    font-size: 10px;
+    background-color: $pageBgColor;
+  }
+  
+  .noFixed {
+    opacity: 0;
+    height: 0px;
+  }
+  
+  .footer_fixd {
+    transition: all .25s linear;
+  }
