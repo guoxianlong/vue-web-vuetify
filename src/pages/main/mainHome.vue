@@ -52,7 +52,7 @@ export default {
      *
      */
     toGitHub(){
-      location.href = "https://github.com/jiangdaofengdcc/main"
+      location.href = "https://github.com/jdfdcc/"
     }
   },
   //
