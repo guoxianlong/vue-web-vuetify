@@ -10,7 +10,7 @@
         </v-btn> -->
 				<div  v-for="item in images" :key="item" style="width:100%">
 					<!-- <v-parallax :src="'../../../static/imges/'+item+'.jpeg'" ></v-parallax> -->
-					<img style="width:100%" :src="'../../../static/imges/'+item+'.jpeg'" alt="">
+					<img style="width:100%" :src="'./static/imges/'+item+'.jpeg'" alt="">
 				</div>
     </main>
   </section>
