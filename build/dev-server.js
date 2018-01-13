@@ -14,10 +14,10 @@ var webpackConfig = require('./webpack.dev.conf')
 
 // default port where dev server listens for incoming traffic
 var port = process.env.PORT || config.dev.port
-  // automatically open browser, if not set will be false
+// automatically open browser, if not set will be false
 var autoOpenBrowser = !!config.dev.autoOpenBrowser
-  // Define HTTP proxies to your custom API backend
-  // https://github.com/chimurai/http-proxy-middleware
+// Define HTTP proxies to your custom API backend
+// https://github.com/chimurai/http-proxy-middleware
 var proxyTable = config.dev.proxyTable
 
 var app = express()
@@ -31,25 +31,22 @@ var devMiddleware = require('webpack-dev-middleware')(compiler, {
 })
 
 var hotMiddleware = require('webpack-hot-middleware')(compiler, {
-    log: () => {}
-  })
-  // force page reload when html-webpack-plugin template changes
-compiler.plugin('compilation', function(compilation) {
-  compilation.plugin('html-webpack-plugin-after-emit', function(data, cb) {
-    hotMiddleware.publish({
-      action: 'reload'
-    })
+  log: false,
+  heartbeat: 2000
+})
+// force page reload when html-webpack-plugin template changes
+compiler.plugin('compilation', function (compilation) {
+  compilation.plugin('html-webpack-plugin-after-emit', function (data, cb) {
+    hotMiddleware.publish({ action: 'reload' })
     cb()
   })
 })
 
 // proxy api requests
-Object.keys(proxyTable).forEach(function(context) {
+Object.keys(proxyTable).forEach(function (context) {
   var options = proxyTable[context]
   if (typeof options === 'string') {
-    options = {
-      target: options
-    }
+    options = { target: options }
   }
   app.use(proxyMiddleware(options.filter || context, options))
 })
@@ -78,7 +75,7 @@ var readyPromise = new Promise(resolve => {
 console.log('> Starting dev server...')
 devMiddleware.waitUntilValid(() => {
   console.log('> Listening at ' + uri + '\n')
-    // when env is testing, don't need open it
+  // when env is testing, don't need open it
   if (autoOpenBrowser && process.env.NODE_ENV !== 'testing') {
     opn(uri)
   }

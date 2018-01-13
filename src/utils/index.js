@@ -1,19 +1,21 @@
 import cache from './cache'
 import format from './format'
 import http from './http'
-import help from './help'
-import ui from './ui'
 import validator from './validator'
-import wx from './wx'
+import nativeHandler from './nativeHandler'
+import ui from './ui'
+import help from './help'
+import popup from './popup'
 
 const utils = {
   cache: cache,
   format: format,
   http: http,
-  help: help,
-  ui: ui,
   validator: validator,
-  wx: wx
+  nativeHandler: nativeHandler,
+  ui: ui,
+  help: help,
+  popup: popup
 }
 
 export default utils

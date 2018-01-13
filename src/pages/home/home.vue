@@ -6,11 +6,11 @@
 <script>
 export default {
   name: 'home',
-  data() {
+  data () {
     return {
     }
   },
-  created() {
+  created () {
   }
 }
 </script>

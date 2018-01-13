@@ -34,7 +34,21 @@ var webpackConfig = merge(baseWebpackConfig, {
         warnings: false
       },
       sourceMap: true
-    }),
+		}),
+		//打包出去console 打印
+		// new webpack.optimize.UglifyJsPlugin({
+		// 	drop_debugger: false,
+		// 	drop_console: false,
+    //   minimize : true,
+    //   sourceMap : true,
+    //   mangle: true,
+    //   compress: {
+		// 		warnings: false,
+		// 		drop_debugger: true,
+		// 		drop_console: true,
+    //     warnings: false
+    //   }
+    // }),
     // extract css into its own file
     new ExtractTextPlugin({
       filename: utils.assetsPath('css/[name].css')
@@ -51,22 +65,24 @@ var webpackConfig = merge(baseWebpackConfig, {
     // see https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: config.build.index,
-      template: 'index1.html',
+      template: 'index.html',
       inject: true,
       minify: {
         removeComments: true,
         collapseWhitespace: true,
         removeAttributeQuotes: true
-          // more options:
-          // https://github.com/kangax/html-minifier#options-quick-reference
+        // more options:
+        // https://github.com/kangax/html-minifier#options-quick-reference
       },
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency'
     }),
+    // keep module.id stable when vender modules does not change
+    new webpack.HashedModuleIdsPlugin(),
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      minChunks: function(module, count) {
+      minChunks: function (module, count) {
         // any required modules inside node_modules are extracted to vendor
         return (
           module.resource &&
@@ -82,13 +98,15 @@ var webpackConfig = merge(baseWebpackConfig, {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
       chunks: ['vendor']
-    }),
+		}),
     // copy custom static assets
-    new CopyWebpackPlugin([{
-      from: path.resolve(__dirname, '../static'),
-      to: config.build.assetsSubDirectory,
-      ignore: ['.*']
-    }])
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../static'),
+        to: config.build.assetsSubDirectory,
+        ignore: ['.*']
+      }
+    ])
   ]
 })
 

@@ -10,8 +10,8 @@ const types = {
   TOGGLE_SNACKBAR: 'TOGGLE_SNACKBAR',
   TOGGLE_DIALOG: 'TOGGLE_DIALOG',
   TOGGLE_POPUP: 'TOGGLE_POPUP',
-  //微信用户信息
-  WX_USERINFO: "WX_USERINFO"
+  // 微信用户信息
+  WX_USERINFO: 'WX_USERINFO'
 }
 
 const state = {
@@ -35,7 +35,7 @@ const state = {
   popupMsg: '',
   popupTitle: '',
   popupCallback: null,
-  //微信用户
+  // 微信用户
   wxUserInfo: null
 }
 
@@ -54,17 +54,17 @@ const getters = {
   },
   getWxUser: () => {
     return state.wxUserInfo
-  },
+  }
 }
 
 const actions = {
-  add({
+  add ({
     commit,
     state
   }, product) {
     commit(types.ADD_PRODUCT, product)
   },
-  toggleTab({
+  toggleTab ({
     commit,
     state
   }, show) {
@@ -74,23 +74,23 @@ const actions = {
 }
 
 const mutations = {
-  [types.LOADING](state, params) {
+  [types.LOADING] (state, params) {
     state.loading = params.loading
-    state.loadingMsg = params.msg || '';
+    state.loadingMsg = params.msg || ''
   },
-  [types.LOADING_DISABLED](state, flag) {
+  [types.LOADING_DISABLED] (state, flag) {
     state.loadingDisabled = flag
   },
-  [types.LOGIN](state, user) {
+  [types.LOGIN] (state, user) {
     state.user = user
   },
-  [types.LOCK_SCREEN](state, isLock) {
+  [types.LOCK_SCREEN] (state, isLock) {
     state.lockScreen = isLock
   },
-  [types.TOGGLE_TAB](state, show) {
+  [types.TOGGLE_TAB] (state, show) {
     state.hasFooter = show
   },
-  [types.TOGGLE_TOAST](state, params) {
+  [types.TOGGLE_TOAST] (state, params) {
     state.toast = params.toast
     state.toastMsg = params.toastMsg
     state.toastImg = params.toastImg || ''
@@ -100,7 +100,7 @@ const mutations = {
       }, 3000)
     }
   },
-  [types.TOGGLE_SNACKBAR](state, params) {
+  [types.TOGGLE_SNACKBAR] (state, params) {
     state.snackbar = params.snackbar
     state.snackbarMsg = params.snackbarMsg
     if (state.snackbar) {
@@ -109,22 +109,22 @@ const mutations = {
       }, 3000)
     }
   },
-  [types.TOGGLE_DIALOG](state, params) {
+  [types.TOGGLE_DIALOG] (state, params) {
     state.dialog = params.dialog
     state.dialogMsg = params.dialogMsg
     state.dialogImg = params.dialogImg
     state.dialogButtons = params.dialogButtons
     state.dialogCallback = params.dialogCallback
   },
-  [types.TOGGLE_POPUP](state, params) {
+  [types.TOGGLE_POPUP] (state, params) {
     state.popup = params.popup
     state.popupTitle = params.popupTitle
     state.popupMsg = params.popupMsg
     state.popupCallback = params.popupCallback
   },
-  //保存微信用户信息
-  [types.WX_USERINFO](state, params) {
-    state.wxUserInfo = params;
+  // 保存微信用户信息
+  [types.WX_USERINFO] (state, params) {
+    state.wxUserInfo = params
   }
 }
 
