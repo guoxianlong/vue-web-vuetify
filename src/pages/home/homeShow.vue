@@ -1,6 +1,6 @@
 <template>
   <main class="page_main_show">
-    <div class="main_header" style="background:url(./static/images/wife/3.jpeg)">
+    <div class="main_header" style="background-image:url(./static/images/wife/3.jpeg)">
 
       <div class="header_nav">
         <div class="nav_left">
@@ -24,12 +24,19 @@
 
       <h5 style="font-weight:700">热门租住地</h5>
       <div class="address">
-        <div v-bind:class="[choosed == index ? 'choosed' : '']" v-for="(item, index) in addressList" :key="index" class="address_item">{{item}}</div>
+        <div @click="chooseAddress(index, item)" v-bind:class="[choosed == index ? 'choosed' : '']" v-for="(item, index) in addressList" :key="index" class="address_item">{{item}}</div>
       </div>
-
+      <!-- 主图列表显示区域 -->
       <div class="host_main">
         <div  v-for="(item, index) in hostList" :key="index" class="host_item">
           <img :src="'./static/images/wife/'+ item+'.jpeg'" alt="">
+          <div class="label">
+            <v-btn small class="label_item" depressed>北欧风格</v-btn>
+          </div>
+          <div>
+            <font style="font-size:1.6rem;font-weight:600">$150每张</font>
+            <p style="font-size:1.4rem">整个图是不是非常漂亮啊</p>
+          </div>
         </div>
       </div>
 
@@ -47,10 +54,16 @@ export default {
       menuList: 'USD-手机端-发布房源/体验-故事-帮助-注册-登陆'.split('-'),
       addressList: '北京-上海-深圳-天津-南京-合肥-青岛'.split('-'),
       choosed: '0',
-      hostList: '1-2-3-4-5-6-7-8-9-10-11-12-13-14-15-16'.split('-')
+      hostList: '1-2-3-4-5-6-7-8-9-10-11-12-13-14-15-16-17-18'.split('-')
     }
   },
   methods: {
+    /**
+     * @name 选择地址
+     */
+    chooseAddress (index, item) {
+      this.choosed = index
+    }
   },
   //
   activated () {}
@@ -66,13 +79,26 @@ export default {
       flex-wrap: wrap;
       justify-content: space-between;
       .host_item{
-        flex: 0 0 32%;
-        height: 200px;
+        cursor: pointer;
+        position: relative;
+        flex: 0 0 335px;
+        // height: 200px;
         margin-top: 20px;
         overflow: hidden;
+        .label{
+          .label_item{
+            position: absolute;
+            margin-top: -40px;
+            right: 10px;
+            height:20px;
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: green;
+          }
+        }
         img{
           width: 100%;
-          height: 100%;
+          height: 200px;
         }
       }
     }
@@ -81,11 +107,13 @@ export default {
       display: flex;
       font-size: 1.4rem;
       .address_item{
+        transition: all .5s linear;
+        cursor: pointer;
         margin-right: 20px;
         height: 30px;
         &.choosed{
           color: green;
-          border-bottom: 2px solid rgba(0,0,0,.5);
+          border-bottom: 2px solid green;
         }
       }
     }
