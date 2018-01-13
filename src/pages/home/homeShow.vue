@@ -1,10 +1,10 @@
 <template>
   <main class="page_main_show">
-    <div class="main_header">
+    <div class="main_header" style="background:url(./static/images/wife/3.jpeg)">
 
       <div class="header_nav">
         <div class="nav_left">
-          <img src="../../../static/images/icon/icon.png" alt="">
+          <img :src="'./static/images/icon/icon.png'" alt="">
         </div>
         <nav >
           <ul class="nav_right">
@@ -29,7 +29,7 @@
 
       <div class="host_main">
         <div  v-for="(item, index) in hostList" :key="index" class="host_item">
-          <img :src="'../../../static/images/wife/'+ item+'.jpeg'" alt="">
+          <img :src="'./static/images/wife/'+ item+'.jpeg'" alt="">
         </div>
       </div>
 
@@ -93,7 +93,6 @@ export default {
   .main_header{
    color: white;
     background-size: 100% auto;
-    background-image: url('./../../../static/images/wife/3.jpeg');
     height: 475px;
     background-position-y: bottom;
     .header_content{
