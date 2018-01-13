@@ -41,6 +41,7 @@
       </div>
 
     </section>
+    <jd-footer></jd-footer>
   </main>
 </template>
 

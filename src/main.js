@@ -8,11 +8,12 @@ window.globalConfig = {
 }
 
 import Vue from 'vue'
-import App from './common/components/App'
+import App from './common/App'
 import store from './vuex/store'
 import router from './routers'
 import 'vuetify/dist/vuetify.min.css'
 import Vuetify from 'vuetify'
+import JdUi from './common'
 import '@/assets/css/main.scss'
 import '@/filters/globalFilter.js'
 // import '@/directives/title.js'
@@ -20,6 +21,8 @@ import Navigation from 'vue-navigation'
 import vueScrollBehavior from 'vue-scroll-behavior'
 import utils from './utils'
 
+// 引入全部组件
+Vue.use(JdUi)
 Vue.use(Vuetify)
 window.utils = utils
 Vue.use(Navigation, {
