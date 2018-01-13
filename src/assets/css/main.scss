@@ -3,13 +3,14 @@
     color: $normal-color;
     font-size: 10px;
     background-color: $pageBgColor;
+    font-family: "Hiragino Sans GB","华文细黑","STHeiti","微软雅黑","Microsoft YaHei",SimHei,"Helvetica Neue",Helvetica,Arial,sans-serif !important;
   }
-  
+
   .noFixed {
     opacity: 0;
     height: 0px;
   }
-  
+
   .footer_fixd {
     transition: all .25s linear;
   }
