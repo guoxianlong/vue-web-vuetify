@@ -3,6 +3,8 @@ import Router from 'vue-router'
 
 import main from './main'
 import home from './home'
+import ukhome from './ukhome'
+import phoneHome from './phoneHome'
 
 Vue.use(Router)
 const router = new Router({
@@ -10,7 +12,7 @@ const router = new Router({
     path: '/',
     redirect: '/mainHome'
   },
-    ...main, ...home
+    ...main, ...home, ...ukhome, ...phoneHome
   ]
 })
 
