@@ -45,12 +45,14 @@
           <div class="box_col">Attr</div>
           <div class="box_col">Type</div>
           <div class="box_col">Details</div>
+          <div class="box_col">Default</div>
         </div>
         <!-- 内容列表 -->
         <div v-for="(item, index) in propList" :key="index" class="box_row">
           <div class="box_col">{{item.attr}}</div>
           <div class="box_col">{{item.type}}</div>
           <div class="box_col">{{item.details}}</div>
+          <div class="box_col">{{item.default}}</div>
         </div>
       </div>
     </div>
@@ -86,27 +88,32 @@ export default {
       propList: [{
         attr: 'province',
         type: 'String',
-        details: '省的code或者中文'
+        details: '省的code或者中文',
+        default: ''
       },
       {
         attr: 'city',
         type: 'String',
-        details: '市的code或者中文'
+        details: '市的code或者中文',
+        default: ''
       },
       {
         attr: 'area',
         type: 'String',
-        details: '区的code或者中文'
+        details: '区的code或者中文',
+        default: ''
       },
       {
         attr: 'label',
         type: 'String',
-        details: '无值时提示语'
+        details: '无值时提示语',
+        default: '请选择地址'
       },
       {
         attr: 'disabled',
         type: 'Boolean',
-        details: '是否禁用'
+        details: '是否禁用',
+        default: 'false'
       }],
       // 事件列表
       eventList: [{

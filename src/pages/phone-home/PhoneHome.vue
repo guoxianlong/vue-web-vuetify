@@ -72,7 +72,6 @@ export default {
   },
   methods: {
     toMenu (url) {
-      this.mini = true
       this.$router.push({name: url})
     }
   },
