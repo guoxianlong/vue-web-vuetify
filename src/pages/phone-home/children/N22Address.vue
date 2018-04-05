@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 控件介绍 -->
-    <div class="card_item">
+    <div class="card_item name_title">
       <h3>地址控件</h3>
       <p>
         用于移动端地址三级联动选择控件

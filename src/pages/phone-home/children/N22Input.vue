@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 控件介绍 -->
-    <div class="card_item">
+    <div class="card_item name_title">
       <h3>输入框组件</h3>
       <p>
         页面信息录入，规则

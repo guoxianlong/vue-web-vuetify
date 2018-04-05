@@ -1,14 +1,20 @@
 @import './vars.scss';
+.name_title{
+  padding-top: $pd-hg;
+  h3{
+    font-size: 3rem!important;
+  }
+}
 .card_item{
   font-size: 1.3rem;
-  margin: 5px 0px;
   color: $normal-color;
   margin-bottom: 50px;
+  border-bottom: 1px solid $divider-color;
   h3{
-    font-size: 2.3rem;
-    font-weight: 800;
+    font-size: 1.8rem;
+    // font-weight: 300;
     line-height: 20px;
-    color: $primary-color;
+    // color: $primary-color;
   }
 }
 .table_box {

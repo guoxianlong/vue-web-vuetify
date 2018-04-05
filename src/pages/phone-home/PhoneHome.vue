@@ -1,8 +1,9 @@
 <template>
   <div class="nav_main">
     <!-- 左边 -->
-    <div class="nav_left" :style="{flex:mini ? '0 0 80px' : '0 0 300px'}">
-      <v-navigation-drawer stateless hide-overlay :mini-variant.sync="mini" v-model="drawer">
+    <div class="nav_left" >
+      <!-- :style="{flex:mini ? '0 0 80px' : '0 0 300px'}" -->
+      <!-- <v-navigation-drawer stateless hide-overlay :mini-variant.sync="mini" v-model="drawer">
         <v-toolbar flat class="transparent">
           <v-list class="pa-0">
             <v-list-tile avatar>
@@ -31,7 +32,14 @@
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
-      </v-navigation-drawer>
+      </v-navigation-drawer> -->
+      <nav class="nav_content">
+        <ul>
+          <li class="nav_item" :class="[item.icon === active ? 'is-active' : '']" v-for="(item, index) in navList" :key="index" @click="toMenu(item)">
+            {{item.title}}
+          </li>
+        </ul>
+      </nav>
     </div>
     <div class="nav_center">
       <router-view class="child-view" style="min-height:100vh"></router-view>
@@ -48,20 +56,21 @@ export default {
   name: 'ukhome',
   data () {
     return {
+      active: 'home',
       drawer: true,
-      items: [
+      navList: [
         { title: '框架说明', icon: 'home', url: 'phoneMain' },
-        { title: '开发模板', icon: 'question_answer', url: '' },
+        { title: '开发模板', icon: 'question_answer1', url: '' },
         { title: 'Field组件', icon: 'question_answer', url: 'n22Field' },
         { title: '地址控件', icon: 'add_location', url: 'n22Address' },
         { title: '地图控件', icon: 'edit_location', url: 'n22Map' },
         { title: '性别控件', icon: 'check_circle', url: 'n22Switch' },
         { title: '日历控件', icon: 'date_range', url: 'n22Calendar' },
-        { title: '输入框控件', icon: 'zoom_in', url: 'n22Input' },
+        { title: '输入框控件', icon: 'zoom_in1', url: 'n22Input' },
         { title: '缩放控件', icon: 'zoom_in', url: 'n22Zoom' },
         { title: 'Tab组件', icon: 'tab', url: 'n22Tab' },
         { title: '日期组件', icon: 'date_range', url: 'n22DatePicker' },
-        { title: '自定义轮播图', icon: 'question_answer', url: '' },
+        { title: '自定义轮播图', icon: 'question_answer3', url: '' },
         { title: '视频', icon: 'video_library', url: 'n22Video' },
         { title: '签字', icon: 'assignment', url: 'n22Sign' },
         { title: '公共方法介绍', icon: 'settings_input_composite', url: 'n22Utils' }
@@ -71,11 +80,13 @@ export default {
     }
   },
   methods: {
-    toMenu (url) {
-      this.$router.push({name: url})
+    toMenu (item) {
+      this.active = item.icon
+      this.$router.push({name: item.url})
     }
   },
   created () {
+    document.title = '框架说明'
   }
 }
 </script>
@@ -88,7 +99,34 @@ export default {
 .nav_main{
   display: flex;
   .nav_left{
-    flex: 0 0 300px;
+    flex: 0 0 150px;
+    position: relative;
+    .nav_content{
+      height: 100vh;
+      position: fixed;
+      top:0px;
+      overflow-y: scroll;
+      width: 150px;
+      background-color: rgb(249, 250, 251);
+      padding: 42px 0 42px 0px;
+      ul{
+        list-style: none;
+        .is-active{
+          color: rgb(64, 120, 192);
+          border-right: 2px solid;
+        }
+        .nav_item{
+          font-size: 1.3rem;
+          font-weight: 450;
+          padding: 8px;
+          display: block;
+          text-decoration: none;
+          // color: inherit;
+          transition: color .2s;
+          cursor: pointer;
+        }
+      }
+    }
   }
   .nav_center{
     flex: 1px;

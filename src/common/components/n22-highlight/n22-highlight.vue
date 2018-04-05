@@ -1,6 +1,6 @@
 <template>
   <div class="highlight free-code" :lang="lang" :style="{'max-width':screenWidth + 'px'}">
-     <pre v-if="!isMibile" id='text' ref="copy_content" style="max-width: 100vw;"  :style="{'max-height':height ? height +'px': screenHeight - 40 + 'px','min-height':'200px'}">
+     <pre v-if="!isMibile" id='text' ref="copy_content" style="max-width: 100vw;"  :style="{'max-height':height ? height +'px': screenHeight - 40 + 'px','min-height':'100px'}">
         <code  :class="lang" class="hljs" style="width:100%">
           <div >
             <slot></slot>
@@ -60,6 +60,7 @@ export default {
       let clipboard = new Clipboard(this.$refs.btn_copy)
       clipboard.on('success', e => {
         // window.utils.Toast({message: '复制成功', position: 'bottom'})
+        alert('复制成功')
         console.log('复制成功')
         this.chooseText()
       })
