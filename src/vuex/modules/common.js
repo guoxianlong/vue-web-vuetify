@@ -11,7 +11,9 @@ const types = {
   TOGGLE_DIALOG: 'TOGGLE_DIALOG',
   TOGGLE_POPUP: 'TOGGLE_POPUP',
   // 微信用户信息
-  WX_USERINFO: 'WX_USERINFO'
+  WX_USERINFO: 'WX_USERINFO',
+  // 选择的路由
+  ACTIVE_ROUTER: 'ACTIVE_ROUTER'
 }
 
 const state = {
@@ -36,7 +38,9 @@ const state = {
   popupTitle: '',
   popupCallback: null,
   // 微信用户
-  wxUserInfo: null
+  wxUserInfo: null,
+  // 路由状态
+  activeRouter: 'phoneMain'
 }
 
 const getters = {
@@ -125,6 +129,10 @@ const mutations = {
   // 保存微信用户信息
   [types.WX_USERINFO] (state, params) {
     state.wxUserInfo = params
+  },
+  // ACTIVE_ROUTER
+  [types.ACTIVE_ROUTER] (state, params) {
+    state.activeRouter = params
   }
 }
 

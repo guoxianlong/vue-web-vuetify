@@ -35,7 +35,7 @@
       </v-navigation-drawer> -->
       <nav class="nav_content">
         <ul>
-          <li class="nav_item" :class="[item.icon === active ? 'is-active' : '']" v-for="(item, index) in navList" :key="index" @click="toMenu(item)">
+          <li class="nav_item" :class="[item.url === $store.state.common.activeRouter ? 'is-active' : '']" v-for="(item, index) in navList" :key="index" @click="toMenu(item)">
             {{item.title}}
           </li>
         </ul>
@@ -56,15 +56,14 @@ export default {
   name: 'ukhome',
   data () {
     return {
-      active: 'home',
       drawer: true,
       navList: [
         { title: '框架说明', icon: 'home', url: 'phoneMain' },
-        { title: '开发模板', icon: 'question_answer1', url: '' },
+        { title: '开发模板', icon: 'question_answer1', url: 'n22TempLate' },
         { title: 'Field组件', icon: 'question_answer', url: 'n22Field' },
         { title: '地址控件', icon: 'add_location', url: 'n22Address' },
         { title: '地图控件', icon: 'edit_location', url: 'n22Map' },
-        { title: '性别控件', icon: 'check_circle', url: 'n22Switch' },
+        { title: '开关控件', icon: 'check_circle', url: 'n22Switch' },
         { title: '日历控件', icon: 'date_range', url: 'n22Calendar' },
         { title: '输入框控件', icon: 'zoom_in1', url: 'n22Input' },
         { title: '缩放控件', icon: 'zoom_in', url: 'n22Zoom' },
@@ -81,7 +80,6 @@ export default {
   },
   methods: {
     toMenu (item) {
-      this.active = item.icon
       this.$router.push({name: item.url})
     }
   },
@@ -112,11 +110,12 @@ export default {
       ul{
         list-style: none;
         .is-active{
-          color: rgb(64, 120, 192);
+          color: rgb(64, 120, 192)!important;
           border-right: 2px solid;
         }
         .nav_item{
           font-size: 1.3rem;
+          color: $normal-color-light;
           font-weight: 450;
           padding: 8px;
           display: block;
