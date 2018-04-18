@@ -23,7 +23,7 @@ export default {
     return {
     }
   },
-  created: {},
+  created () {},
   computed: {},
   methods: {
     /** @name 初始化数据 */
